@@ -1,0 +1,104 @@
+@import "src/assets/scss/settings/global.scss";
+@import "src/assets/scss/settings/helpers/animations.scss";
+
+.c-contact {
+  min-height: calc(100vh - 92px);
+  padding-top: 70px;
+  padding-bottom: 70px;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+
+  &__title {
+    margin-top: 0;
+    font-weight: $weight--semibold;
+    opacity: 0;
+    filter: blur(5px);
+    animation: 0.4s ease-in-out 0.3s 1 blurIntoFocus forwards;
+
+    @media (min-width: $breakpoint-tablet) {
+      max-width: 720px;
+    }
+  }
+  &__form {
+    display: grid;
+    column-gap: 26px;
+    row-gap: 26px;
+    opacity: 0;
+    filter: blur(5px);
+    animation: 0.4s ease-in-out 0.5s 1 blurIntoFocus forwards;
+
+    @media (min-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+
+      input,
+      select,
+      textarea {
+        height: 46px;
+        border-radius: 3px;
+        border: none;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+        background-color: $color--white;
+        padding: 0 16px;
+        font-size: 16px;
+
+        &::placeholder {
+          color: rgba($color--black, 0.5);
+        }
+      }
+
+      select {
+        color: rgba($color--black, 0.5);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        position: relative;
+        display: inline-block;
+        background-image: url("../../assets/images/chevron-down.svg");
+        background-repeat: no-repeat;
+        background-position-x: 99%;
+        background-position-y: 50%;
+      }
+
+      textarea {
+        padding-top: 16px;
+        min-height: 230px;
+        font-family: $font--text;
+      }
+
+      &--full {
+        @media (min-width: $breakpoint-tablet) {
+          grid-column: 1 / 3;
+        }
+      }
+    }
+
+    &__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color--primary;
+      color: $color--white;
+      border: none;
+      height: 46px;
+      font-family: $font--text;
+      font-size: 18px;
+      border-radius: 3px;
+      width: min-content;
+      padding: 0 42px;
+      grid-column: 1;
+    }
+  }
+}
